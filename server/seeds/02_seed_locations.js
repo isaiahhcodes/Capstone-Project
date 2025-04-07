@@ -1,13 +1,15 @@
 /**
  * @param { import("knex").Knex } knex
- * @returns { Promise<void> } 
+ * @returns { Promise<void> }
  */
 exports.seed = async function(knex) {
-  // Deletes ALL existing entries
-  await knex('table_name').del()
-  await knex('table_name').insert([
-    {id: 1, colName: 'rowValue1'},
-    {id: 2, colName: 'rowValue2'},
-    {id: 3, colName: 'rowValue3'}
+  await knex('locations').del();
+
+  await knex('locations').insert([
+    { id: 1, state: 'North Carolina', military_base: 'Fort Liberty' },
+    { id: 2, state: 'Virginia', military_base: 'Fort Eustis' },
+    { id: 3, state: 'Texas', military_base: 'Fort Cavazos' }
   ]);
+
+  await knex.raw(`SELECT setval('locations_id_seq', (SELECT MAX(id) FROM locations))`);
 };

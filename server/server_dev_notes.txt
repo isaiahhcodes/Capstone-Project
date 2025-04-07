@@ -7,3 +7,7 @@ psql -U postgres -d work_order_db
 
 *** Put in your .env file in your server directory ****
 DB_CONNECTION_STRING=postgres://postgres:docker@localhost:5432/work_order_db
+
+
+Changed phone_number in users to string
+Changed password to varchar(255) from (50)
