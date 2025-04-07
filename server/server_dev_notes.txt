@@ -9,5 +9,11 @@ psql -U postgres -d work_order_db
 DB_CONNECTION_STRING=postgres://postgres:docker@localhost:5432/work_order_db
 
 
+Commands to create data tables and seed:
+*** Must have Docker Database running ***
+cd server/
+npx knex migrate:latest
+npx knex seed:run
+
 Changed phone_number in users to string
 Changed password to varchar(255) from (50)
